@@ -286,16 +286,46 @@ h1, h2, h3, h4 {
     font-weight: 400;
     transform-style: preserve-3d;
     display: inline-block;
+    width: auto;
+    position: relative;
+    min-height: 2.2rem;
+}
+
+/* Typing Cursor Effect */
+.typing-cursor::after {
+    content: '|';
+    margin-left: 5px;
+    color: var(--primary-light);
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.hero-desc-container {
+    overflow: hidden;
     width: 100%;
+    margin-bottom: 2.5rem;
+    display: flex;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    white-space: nowrap;
 }
 
 .hero-desc {
     font-size: 1.2rem;
     color: var(--text-muted);
-    margin-bottom: 2.5rem;
     transform-style: preserve-3d;
     display: inline-block;
-    width: 100%;
+    padding-right: 4rem;
+    flex-shrink: 0;
 }
 
 .hero-buttons {
@@ -381,6 +411,11 @@ h1, h2, h3, h4 {
 @keyframes float {
     0% { transform: translate(0, 0) scale(1); }
     100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
 }
 
 /* --- Sections Common --- */

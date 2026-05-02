@@ -159,4 +159,27 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorOutline.style.display = 'none';
         document.body.style.cursor = 'auto';
     }
+
+    // Typewriter Effect
+    const typeSubtitle = document.querySelector('.subtitle');
+    if (typeSubtitle) {
+        const text = typeSubtitle.textContent;
+        typeSubtitle.textContent = '';
+        typeSubtitle.classList.add('typing-cursor');
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                typeSubtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Keep the cursor blinking after typing finishes
+                // Optionally remove it after some time if desired
+            }
+        }
+        
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
+    }
 });
