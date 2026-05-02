@@ -30,6 +30,53 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     overflow-x: hidden;
+    cursor: none;
+}
+
+/* --- Custom Cursor --- */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    transition: width var(--transition), height var(--transition), background-color var(--transition), border-color var(--transition), opacity var(--transition);
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-light);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-light);
+}
+
+/* Cursor hover state */
+.cursor-dot.hover {
+    width: 12px;
+    height: 12px;
+    background-color: var(--secondary);
+}
+
+.cursor-outline.hover {
+    width: 80px;
+    height: 80px;
+    background-color: rgba(139, 92, 246, 0.1);
+    border-color: var(--secondary);
+}
+
+.cursor-outline.hover-text {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(139, 92, 246, 0.15);
+    border-color: var(--primary-light);
 }
 
 .container {
