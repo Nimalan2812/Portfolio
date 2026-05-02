@@ -260,6 +260,7 @@ h1, h2, h3, h4 {
     position: relative;
     padding-top: 80px;
     overflow: hidden;
+    perspective: 1000px;
 }
 
 .hero-content {
@@ -283,12 +284,18 @@ h1, h2, h3, h4 {
     color: var(--primary-light);
     margin-bottom: 1.5rem;
     font-weight: 400;
+    transform-style: preserve-3d;
+    display: inline-block;
+    width: 100%;
 }
 
 .hero-desc {
     font-size: 1.2rem;
     color: var(--text-muted);
     margin-bottom: 2.5rem;
+    transform-style: preserve-3d;
+    display: inline-block;
+    width: 100%;
 }
 
 .hero-buttons {

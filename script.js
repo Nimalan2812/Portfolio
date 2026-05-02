@@ -118,25 +118,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Interactive Text (Subtitle & Hero Desc)
+    // Interactive Text (Subtitle & Hero Desc) - Enhanced 3D Tilt
     const interactiveText = document.querySelectorAll('.subtitle, .hero-desc');
     interactiveText.forEach(text => {
         text.addEventListener('mouseenter', () => {
             cursorOutline.classList.add('hover-text');
+            text.style.transition = 'transform 0.1s ease-out';
         });
+
         text.addEventListener('mouseleave', () => {
             cursorOutline.classList.remove('hover-text');
-            text.style.transform = 'translate(0, 0)';
+            text.style.transform = 'translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)';
+            text.style.transition = 'transform 0.5s ease-out';
         });
 
         text.addEventListener('mousemove', (e) => {
             const rect = text.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
 
-            // Subtle magnetic effect
-            text.style.transform = `translate(${x * 0.1}px, ${y * 0.2}px)`;
-            text.style.transition = 'transform 0.1s ease-out';
+            // Calculate rotation values (max 15 degrees)
+            const rotateX = ((y - centerY) / centerY) * -15;
+            const rotateY = ((x - centerX) / centerX) * 15;
+
+            // Calculate translation (max 10px)
+            const translateX = (x - centerX) * 0.1;
+            const translateY = (y - centerY) * 0.1;
+
+            // Apply 3D transform
+            text.style.transform = `translate3d(${translateX}px, ${translateY}px, 20px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
     });
 
